@@ -1,0 +1,22 @@
+<ion-header no-border>
+  <ion-toolbar transparent>
+    <ion-buttons start>
+      <button class="btn-goback" (tap)="goback()" [ngClass]="{none:!canGoback()}">
+      </button>
+    </ion-buttons>
+    <ion-title>{{index+1}}/{{data.length}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="swiper-container">
+    <div class="swiper-wrapper" *ngFor="let el of data">
+      <div class="swiper-slide">
+        <div class="swiper-zoom-container">
+          <img [src]="el">
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination swiper-pagination-white"></div>
+  </div>
+</ion-content>

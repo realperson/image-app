@@ -1,0 +1,80 @@
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingText="下拉刷新页面" refreshingText="刷新中...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div class="info-wrap">
+    <button class="btn-config" (tap)="gotoEditInfo()">
+      编辑
+    </button>
+    <div class="main-bg">
+      <img [src]="data?.photo" *ngIf="data&&data.photo" [ngClass]="{none:data==null}">
+    </div>
+    <!--<div [ngClass]="{none:!hasInit}">-->
+      <div class="logo-wrap">
+        <div [ngClass]="{none:!hasInit}">
+          <ion-spinner name="ios-small" class="center-it" [ngClass]="{none:loaded}"></ion-spinner>
+          <img [src]="data?data.small_photo:''" [ngClass]="{loaded:loaded}" (load)="loadImg()">
+        </div>
+      </div>
+      <p class="user-name">
+        {{data?.real_name}}
+      </p>
+      <p class="address">
+        {{data?.province_of_origin?.name}} {{data?.city_of_origin?.name}}
+      </p>
+      <div class="follow-wrap">
+        <div class="half-wrap">
+          <span class="follow">关注 233</span>
+        </div>
+        <div class="half-wrap">
+          <span class="fans">粉丝 6666</span>
+        </div>
+      </div>
+      <p class="introduction">
+        {{data?.introduction}}
+      </p>
+    <!--</div>-->
+  </div>
+  <div class="list-wrap">
+    <ion-list>
+      <button ion-item (tap)="gotoChoiceness()">
+        <div class="left-icon" item-start>
+          <img src="assets/images/personal/choiceness.png">
+        </div>
+        我的精选
+        <ion-note item-end>5</ion-note>
+      </button>
+      <button ion-item (tap)="gotoFavorite()">
+        <div class="left-icon" item-start>
+          <img src="assets/images/personal/favorite.png">
+        </div>
+        我喜欢的
+        <ion-note item-end>26</ion-note>
+      </button>
+      <button ion-item (tap)="gotoMessages()">
+        <div class="left-icon" item-start>
+          <img src="assets/images/personal/message.png">
+        </div>
+        我的消息
+        <ion-note item-end>0</ion-note>
+      </button>
+      <button ion-item (tap)="gotoChangePassword()">
+        <div class="left-icon" item-start>
+          <img src="assets/images/personal/lock.png">
+        </div>
+        修改密码
+      </button>
+      <button ion-item no-lines (tap)="logout()">
+        <div class="left-icon" item-start>
+          <img src="assets/images/personal/exit.png">
+        </div>
+        退出登录
+      </button>
+    </ion-list>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <navigation [index]="'4'"></navigation>
+</ion-footer>

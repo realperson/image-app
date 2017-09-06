@@ -1,0 +1,84 @@
+<ion-header no-border class="g-header">
+  <ion-toolbar>
+    <ion-buttons start>
+      <button class="btn-close" (tap)="close()"></button>
+    </ion-buttons>
+    <ion-title>发布图说</ion-title>
+    <ion-buttons end>
+      <button ion-button clear class="btn-change mr" (tap)="changeImage()">
+        更换图片
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="tab" [ngClass]="{active:step==1}">
+    <div class="list-wrap">
+      <div class="tip-wrap">轻触图片可将其设为该图说的封面哦</div>
+      <ul class="clearfix">
+        <li *ngFor="let item of data;let i=index;">
+          <div class="img-wrap pointer" (tap)="changeCover(i)">
+            <img [src]="item.thumbnailURL | CdvPhotoLibrary">
+            <span [ngClass]="{none:!item.isCover}">封面</span>
+          </div>
+          <div class="introduce-wrap">
+            <textarea class="thin-scroll" placeholder="请描述一下这张图片" [ngModel]="item.description" (ngModelChange)="changeDescription($event,item)"></textarea>
+          </div>
+          <button ion-button  class="btn-delete" (tap)="deleteItem(i)"></button>
+        </li>
+      </ul>
+    </div>
+    <button ion-button  class="btn-sure" [ngClass]="{disable:!canGoNext()}" (tap)="next()">下一步</button>
+  </div>
+  <div class="tab" [ngClass]="{active:step==2}">
+    <div class="scroll-wrap">
+      <button class="btn-view" (tap)="prev()">
+        <span>已选择图片</span>
+        <span class="count">{{data.length}}张</span>
+      </button>
+      <div class="main-wrap">
+        <div class="title-wrap">
+          请选择来源
+        </div>
+        <div class="source-wrap">
+          <div class="select-wrap">
+            <div class="half-wrap">
+              <span [ngClass]="{active:source.type==1}" (tap)="changeSourceType(1)">原创</span>
+            </div>
+            <div class="half-wrap">
+              <span [ngClass]="{active:source.type==2}" (tap)="changeSourceType(2)">其他</span>
+            </div>
+          </div>
+          <div class="input-wrap" [ngClass]="{none:source.type!==2}">
+            <input type="text" placeholder="请输入来源名称或网址" autocomplete="off" [(ngModel)]="source.from">
+            <button ion-button  class="btn-clear" [ngClass]="{none:!canShowClearSource()}" (tap)="clearSource()"></button>
+          </div>
+        </div>
+        <div class="tag-wrap">
+          <div class="tag-head">
+            请选择精选标签
+            <button ion-button  class="btn-add" (tap)="addTag()"></button>
+          </div>
+          <div class="content-wrap">
+            <ul class="clearfix">
+              <li *ngFor="let item of tags;let i=index;" (tap)="selectTag(i)" [ngClass]="{active:item.selected}" [@tag]="'in'">
+                <span class="name">{{item.name}}</span>
+                <span class="count">{{item.count}}</span>
+              </li>
+            </ul>
+            <div class="empty-wrap" [ngClass]="{none:tags.length!=0}">
+              <div class="empty-tip">
+                <span>
+                  您还没有创建任何精选,快去<span class="btn-create" (tap)="addTag()">创建</span>吧
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button ion-button  class="btn-sure" [ngClass]="{disable:!canPublish()}" (tap)="publish()">发 布</button>
+  </div>
+  <div class="refuse-mask" [ngClass]="{none:canInteractive}"></div>
+</ion-content>

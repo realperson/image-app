@@ -1,0 +1,68 @@
+<ion-header no-border class="g-header">
+  <ion-toolbar>
+    <ion-buttons start>
+      <button class="btn-goback" (tap)="goback()" [ngClass]="{none:!canGoback()||isChanged()}">
+      </button>
+      <button ion-button clear color="cancel" class="ml" (tap)="cancel()" [ngClass]="{none:!isChanged()}">
+        取消
+      </button>
+    </ion-buttons>
+    <ion-title>编辑个人信息</ion-title>
+    <ion-buttons end>
+      <button ion-button clear color="save" class="mr" (tap)="save()" [ngClass]="{none:!isChanged()}">
+        保存
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="avatar-wrap">
+    <div class="img-wrap">
+      <ion-spinner name="ios-small" class="center-it" [ngClass]="{none:loaded}"></ion-spinner>
+      <img [src]="originData?originData.small_photo:''" [ngClass]="{loaded:loaded}" (load)="loadImg()">
+      <button class="btn-edit" id="userUploadBtn"></button>
+    </div>
+  </div>
+  <div class="info-wrap">
+    <ul>
+      <li class="no-bg">
+        <label>
+          <div class="left-label">姓名</div>
+          <div class="right-content">
+            <input type="text" placeholder="请输入姓名" maxlength="30" autocomplete="off" [ngModel]="data.name" (ngModelChange)="changeName($event)">
+          </div>
+        </label>
+      </li>
+      <li>
+        <div class="left-label">地址</div>
+        <div class="right-content">
+          {{originData.province}} {{originData.city}}
+        </div>
+      </li>
+      <li (tap)="showSpace()">
+        <div class="left-label">擅长空间</div>
+        <div class="right-content">
+          {{getCurrentSpace()}}
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="space-wrap" [ngClass]="{none:!isShowSpace}">
+    <div class="mask-wrap" (tap)="hideSpace()"></div>
+    <div class="spaces">
+      <div class="space-title">
+        <button ion-button clear color="cancel" class="left" (tap)="cancelSpace()">取消</button>
+        <span>选择擅长空间</span>
+        <button ion-button clear color="save" class="right" (tap)="saveSpace()">确定</button>
+      </div>
+      <div class="space-list">
+        <ul>
+          <li (tap)="selectTempSpace(item)" *ngFor="let item of data.spaces;let i=index;let last = last;" [ngClass]="{active:item.selected}" [title]="item.name">
+            <span>{{item.name}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</ion-content>

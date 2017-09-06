@@ -1,0 +1,203 @@
+@import "config";
+@import "loading";
+@import "toast";
+@import "swiper";
+
+$g-font-family:"Microsoft YaHei",SimHei,STHeiti,"Heiti SC",DINPro-Regular,sans-serif,SimSun,"MicrosoftJhengHei",MingLiu;
+body{
+  //font-family:$g-font-family;
+}
+.none{
+  display: none !important;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+*{
+  &:focus{
+    outline: none !important;
+  }
+}
+a{
+  &:link,&:visited{
+    text-decoration: none;
+  }
+  &:hover,&:active{
+    text-decoration: none;
+  }
+}
+input,textarea{
+  -webkit-appearance: none;
+}
+.invisible{
+  visibility: hidden;
+}
+img{
+  vertical-align: top;
+}
+.img-full{
+  width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+.pointer{
+  cursor: pointer;
+}
+.one-line{
+  @include singleLine;
+}
+.clearfix:before,
+.clearfix:after{
+  display: table;
+  content: " ";
+}
+.clearfix:after{
+  clear: both;
+}
+.ms-controller{
+  display:none;
+}
+.fixed{
+  position: fixed !important;
+}
+.single-line{
+  @include singleLine;
+}
+/*********************水平和垂直居中对齐*********************/
+.middle-outer{
+  display:table;
+  text-align:center;
+  width: 100%;
+  height: 100%;
+  .middle-inner{
+    width: 100%;
+    height: 100%;
+    display:table-cell;
+    vertical-align:middle;
+  }
+}
+.center-it{
+  @include center-center;
+}
+/*********************优化滚动条*********************/
+.thin-scroll{
+  &::-webkit-scrollbar{
+    width: 0px;
+  }
+  &::-webkit-scrollbar-track{
+    background: #ffffff;
+  }
+  &::-webkit-scrollbar-thumb{
+    background: #8c96a0;
+  }
+}
+.not-pc{
+  .thin-scroll {
+    &::-webkit-scrollbar {
+      width: 0px;
+    }
+  }
+}
+/*********************阻止交互*********************/
+.refuse-mask{
+  @include full;
+  z-index: 1000;
+  background-color: rgba(0,0,0,0);
+}
+
+/*********************加载状态*********************/
+.middle-loading {
+  width: 100%;
+  div{
+    text-align: center;
+    font-size: 12px;
+    line-height: 30px;
+    vertical-align: middle;
+  }
+  .landing{
+    width: 44px;
+    height: auto;
+    margin-top: 10px;
+  }
+  .mask-content {
+    display: inline-block;
+    padding: 20px 20px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+  }
+}
+/*********************顶部标题*********************/
+.toolbar{
+  padding: 0 !important;
+  ion-buttons{
+    margin: 0;
+    height: 44px;
+    &.bar-buttons-md[start] {
+      -webkit-order: 2;
+      -ms-flex-order: 2;
+      order: 2;
+    }
+    button[ion-button]{
+      margin-top: 6px;
+    }
+    .ml{
+      margin-left: 10px;
+    }
+    .mr{
+      margin-right: 10px;
+    }
+  }
+}
+.ios{
+  .toolbar {
+    ion-buttons {
+      margin-top: 15px;
+      .bar-button-ios {
+        margin-top: 6px;
+        height: 32px;
+      }
+    }
+  }
+}
+
+ion-header{
+  &.g-header{
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    &.white{
+      box-shadow:none;
+      .toolbar-background{
+        background-color: #ffffff;
+      }
+    }
+    ion-navbar,.toolbar{
+      min-height: 44px;
+    }
+    .toolbar-title{
+      color: #333;
+      font-size: 17px;
+      text-align: center;
+    }
+  }
+}
+/*********************返回按钮*********************/
+.btn-goback{
+  width: 32px;
+  //min-height: 32px;
+  height: 100%;
+  box-shadow: none;
+  outline: none;
+  background: transparent url("../assets/images/common/nav/goback.png") no-repeat center center/16px 16px;
+}

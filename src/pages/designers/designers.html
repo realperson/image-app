@@ -1,0 +1,93 @@
+<ion-header no-border class="g-header">
+  <ion-toolbar>
+    <ion-title>设计师</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="tab-header">
+    <ul class="clearfix">
+      <li class="pointer" [ngClass]="{active:activeIndex==1&&isShowFilter}" (tap)="changeIndex(1)" [title]="getCurrentSpace()">
+        <img src="assets/images/designers/space.png" class="icon-normal">
+        <img src="assets/images/designers/space-active.png" class="icon-active">
+        {{getCurrentSpace()}}
+      </li>
+      <li class="pointer" [ngClass]="{active:activeIndex==2&&isShowFilter}" (tap)="changeIndex(2)" [title]="getCurrentArea()">
+        <img src="assets/images/designers/location.png" class="icon-normal">
+        <img src="assets/images/designers/location-active.png" class="icon-active">
+        {{getCurrentArea()}}
+      </li>
+    </ul>
+  </div>
+  <div class="filter-wrap" [ngClass]="{none:!isShowFilter}">
+    <div class="mask-wrap" (tap)="hideFilter()"></div>
+    <div class="tab space-wrap thin-scroll" [ngClass]="{active:activeIndex==1}">
+      <ul class="clearfix">
+        <li (tap)="selectSpace(0)" [ngClass]="{active:0==spaceId}" title="全部空间">
+          <span>全部空间</span>
+        </li>
+        <li (tap)="selectSpace(item.id)" *ngFor="let item of spaces;let i=index;let last = last;" [ngClass]="{active:item.id==spaceId}" [title]="item.name">
+          <span>{{item.name}}</span>
+        </li>
+      </ul>
+    </div>
+    <div class="tab location-wrap" [ngClass]="{active:activeIndex==2}">
+      <div class="left-content thin-scroll">
+        <ul>
+          <li (tap)="selectProvince(item.id)" *ngFor="let item of provinces;let i=index;let last = last;" [ngClass]="{active:item.id==provinceId}" [title]="item.name">
+            {{item.name}}
+          </li>
+        </ul>
+      </div>
+      <div class="right-content">
+        <div class="area thin-scroll">
+          <ul class="clearfix">
+            <li (tap)="selectCity(0)" [ngClass]="{active:0==cityId}" title="全部">
+              <span>全部</span>
+            </li>
+            <li (tap)="selectCity(item.id)" *ngFor="let item of cities;let i=index;let last = last;" [ngClass]="{active:item.id==cityId}" [title]="item.name">
+              <span>{{item.name}}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="current-location">
+          <img src="assets/images/designers/pin.png">
+          广州
+        </div>
+        <button class="btn-locate">
+          <img src="assets/images/designers/refresh.png">
+          重新定位
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="content-wrap thin-scroll">
+    <div class="tab active">
+      <ul>
+        <li (click)="showDesigner(item.id)" *ngFor="let item of data;let i=index;let last = last;" [title]="item.name">
+          <div class="avatar">
+            <img [src]="item.url" class="icon-normal">
+          </div>
+          <div class="info-wrap">
+            <div class="title-wrap clearfix">
+              <span class="name">{{item.name}}</span>
+              <span class="location">{{item.location}}</span>
+            </div>
+            <div class="introduce">{{item.introduce}}</div>
+            <div class="fans">粉丝 <span class="count">{{item.fans}}</span></div>
+          </div>
+          <button class="btn-follow" [ngClass]="{followed:item.follow}" (click)="toggleFollow($event,item)">
+            <span class="follow-text">关注</span>
+            <span class="followed-text">已关注</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!--<img src="assets/images/designers/bg.jpg" class="img-full">-->
+</ion-content>
+
+<ion-footer>
+  <navigation [index]="'2'"></navigation>
+</ion-footer>

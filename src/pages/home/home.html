@@ -1,0 +1,66 @@
+<ion-header no-border class="g-header">
+  <ion-navbar>
+    <!--<ion-buttons start>-->
+      <!--<button ion-button icon-only>-->
+        <!--<ion-icon name="search"></ion-icon>-->
+      <!--</button>-->
+    <!--</ion-buttons>-->
+    <ion-title>
+      云选材 ·图说
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingText="下拉刷新页面" refreshingText="刷新中...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div style="width: 100%;z-index: 100;background: #fff;text-align: center;line-height: 18px;position: fixed;left: 0;top: 60px;">
+    {{debugInfo}}
+  </div>
+  <!--<div class="banner" [ngClass]="{none:!banners.hasInit}">-->
+    <!--<ion-slides transparent pager>-->
+      <!--<ion-slide *ngFor="let el of banners.data">-->
+        <!--<img [src]="el.img_url">-->
+      <!--</ion-slide>-->
+    <!--</ion-slides>-->
+  <!--</div>-->
+  <!--图说-->
+  <div class="hot-wrap">
+    <div class="content" [ngClass]="{none:!dataConfig.hasInit}">
+      <ul class="clearfix" #pictures [ngStyle]="{height:dataConfig.containerHeight+'px'}">
+        <li *ngFor="let item of dataConfig.data;let i=index;let last = last;" [ngStyle]="{left:item.left+'px',top:item.top+'px',width:imageWidth+'px'}" [repeat]="last" (repeatRendered)="renderedList()" [@image]="viewState"  [ngClass]="{loaded:item.loaded}">
+          <a href="javascript:void(0)" (tap)="openDetail(item)" [attr.title]="item.title">
+            <div class="img-wrap">
+              <div class="middle-outer">
+                <div class="middle-inner">
+                  <img [src]="item.url" class="block" [ngStyle]="{height:item.ossHeight+'px'}">
+                </div>
+              </div>
+            </div>
+            <div class="info">
+              <p class="title">{{item.title}}</p>
+              <p class="view">{{item.choiceness_count}}</p>
+              <p class="operate" (tap)="toggleLikeImage($event,item,false)">
+                <span class="star" [ngClass]="{active:item.had_star}"></span>
+                <span class="star copy none"></span>
+                <span class="count">{{item.favorite_count}}</span>
+              </p>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="middle-loading">
+      <div [ngClass]="{none:!dataConfig.loading}"><ion-spinner></ion-spinner></div>
+      <div [ngClass]="{none:!(!dataConfig.loading&&dataConfig.page>=dataConfig.pageCount&&dataConfig.page>1)}">
+        <img src="assets/images/common/waterfall/landing.png" class="landing">
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <navigation [index]="'1'"></navigation>
+</ion-footer>

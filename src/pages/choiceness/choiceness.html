@@ -1,0 +1,208 @@
+<ion-header no-border class="g-header">
+  <ion-navbar>
+    <ion-title>精选</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="tab-header">
+    <ul class="clearfix">
+      <li class="pointer" [ngClass]="{active:activeIndex==1}" (tap)="changeIndex(1)">
+        所有
+      </li>
+      <li class="pointer" [ngClass]="{active:activeIndex==2}" (tap)="changeIndex(2)">
+        人气
+      </li>
+    </ul>
+  </div>
+  <div class="content-wrap">
+    <div class="tab" [ngClass]="{active:activeIndex==1}">
+      <ul>
+        <li class="pointer" (tap)="showChoice(1)">
+          <img src="assets/images/choiceness/bg1.jpg" class="choice-bg">
+          <div class="choice">
+            <div class="middle-outer">
+              <div class="middle-inner">
+                <div class="title">
+                  # 竹板工艺
+                </div>
+                <div class="follow-wrap">
+                  <div class="half-wrap">
+                    <img src="assets/images/choiceness/mark.png">
+                    <span class="follow">160</span>
+                  </div>
+                  <div class="half-wrap">
+                    <img src="assets/images/choiceness/amount.png">
+                    <span class="fans">32</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="pointer" (tap)="showChoice(1)">
+          <img src="assets/images/choiceness/bg2.jpg" class="choice-bg">
+          <div class="choice">
+            <div class="middle-outer">
+              <div class="middle-inner">
+                <div class="title">
+                  # 石材
+                </div>
+                <div class="follow-wrap">
+                  <div class="half-wrap">
+                    <img src="assets/images/choiceness/mark.png">
+                    <span class="follow">160</span>
+                  </div>
+                  <div class="half-wrap">
+                    <img src="assets/images/choiceness/amount.png">
+                    <span class="fans">32</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="pointer" (tap)="showChoice(1)">
+          <img src="assets/images/choiceness/bg3.jpg" class="choice-bg">
+          <div class="choice">
+            <div class="middle-outer">
+              <div class="middle-inner">
+                <div class="title">
+                  # 瓷砖
+                </div>
+                <div class="follow-wrap">
+                  <div class="half-wrap">
+                    <img src="assets/images/choiceness/mark.png">
+                    <span class="follow">160</span>
+                  </div>
+                  <div class="half-wrap">
+                    <img src="assets/images/choiceness/amount.png">
+                    <span class="fans">32</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="pointer" (tap)="showChoice(1)">
+          <img src="assets/images/choiceness/bg1.jpg" class="choice-bg">
+          <div class="choice">
+            <div class="middle-outer">
+              <div class="middle-inner">
+                <div class="title">
+                  # 照明
+                </div>
+                <div class="follow-wrap">
+                  <div class="half-wrap">
+                    <img src="assets/images/choiceness/mark.png">
+                    <span class="follow">160</span>
+                  </div>
+                  <div class="half-wrap">
+                    <img src="assets/images/choiceness/amount.png">
+                    <span class="fans">32</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="pointer" (tap)="showChoice(1)">
+          <img src="assets/images/choiceness/bg2.jpg" class="choice-bg">
+          <div class="choice">
+            <div class="middle-outer">
+              <div class="middle-inner">
+                <div class="title">
+                  # 玻璃
+                </div>
+                <div class="follow-wrap">
+                  <div class="half-wrap">
+                    <img src="assets/images/choiceness/mark.png">
+                    <span class="follow">160</span>
+                  </div>
+                  <div class="half-wrap">
+                    <img src="assets/images/choiceness/amount.png">
+                    <span class="fans">32</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="pointer" (tap)="showChoice(1)">
+          <img src="assets/images/choiceness/bg3.jpg" class="choice-bg">
+          <div class="choice">
+            <div class="middle-outer">
+              <div class="middle-inner">
+                <div class="title">
+                  # 地毯
+                </div>
+                <div class="follow-wrap">
+                  <div class="half-wrap">
+                    <img src="assets/images/choiceness/mark.png">
+                    <span class="follow">160</span>
+                  </div>
+                  <div class="half-wrap">
+                    <img src="assets/images/choiceness/amount.png">
+                    <span class="fans">32</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="tab" [ngClass]="{active:activeIndex==2}">
+      <ul>
+        <li class="pointer" (tap)="showChoice(1)">
+          <img src="assets/images/choiceness/bg1.jpg" class="choice-bg">
+          <div class="choice">
+            <div class="middle-outer">
+              <div class="middle-inner">
+                <div class="title">
+                  # 金属
+                </div>
+                <div class="follow-wrap">
+                  <div class="half-wrap">
+                    <img src="assets/images/choiceness/mark.png">
+                    <span class="follow">160</span>
+                  </div>
+                  <div class="half-wrap">
+                    <img src="assets/images/choiceness/amount.png">
+                    <span class="fans">32</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="pointer" (tap)="showChoice(1)">
+          <img src="assets/images/choiceness/bg3.jpg" class="choice-bg">
+          <div class="choice">
+            <div class="middle-outer">
+              <div class="middle-inner">
+                <div class="title">
+                  # 大理石
+                </div>
+                <div class="follow-wrap">
+                  <div class="half-wrap">
+                    <img src="assets/images/choiceness/mark.png">
+                    <span class="follow">160</span>
+                  </div>
+                  <div class="half-wrap">
+                    <img src="assets/images/choiceness/amount.png">
+                    <span class="fans">32</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <navigation [index]="'3'"></navigation>
+</ion-footer>

@@ -1,0 +1,58 @@
+<ion-content class="project-detail">
+  <div class="head-bar" [ngClass]="{'inverse-bar':isHeadBarInverse}">
+    <div class="left-wrap">
+      <button class="btn-state btn-back" (tap)="goback()">
+        <img class="normal" src="assets/images/detail/go-back-white.png">
+        <img class="inverse" src="assets/images/detail/go-back-black.png">
+      </button>
+    </div>
+    <span>项目详情</span>
+  </div>
+  <div class="wrap" #banner>
+    <div class="project-info">
+      <table>
+        <tr>
+          <td class="key">项目所在地</td>
+          <td class="value">{{data?.address}}</td>
+        </tr>
+        <tr>
+          <td class="key">竣工时间</td>
+          <td class="value">{{data?.project_completion_at}}</td>
+        </tr>
+        <tr>
+          <td class="key">项目面积</td>
+          <td class="value">{{data?.project_area_total}}㎡</td>
+        </tr>
+        <tr>
+          <td class="key">项目造价</td>
+          <td class="value">{{data?.project_investment_total}}万元</td>
+        </tr>
+      </table>
+    </div>
+    <div class="divide-wrap">
+      <div class="circle-left">
+        <img src="assets/images/project-detail/circle-left.png">
+      </div>
+      <div class="circle-right">
+        <img src="assets/images/project-detail/circle-right.png">
+      </div>
+      <div class="divide">
+          <div class="line"></div>
+      </div>
+    </div>
+    <div class="description">
+      <dl>
+        <dt>1.项目定位—— 作品独有的设计策划和定位</dt>
+        <dd>{{data?.project_location}}</dd>
+        <dt>2.空间意境——作品在环境风格上的创新点</dt>
+        <dd>{{data?.project_artistic_conception}}</dd>
+        <dt>3.空间布局——作品在空间布局上的创新点</dt>
+        <dd>{{data?.project_space_layout}}</dd>
+        <dt>4.设计选材——作品在设计选材上的创新点、低碳与经济性</dt>
+        <dd>{{data?.project_design_material}}</dd>
+        <dt>5.用户体验——作品投入使用后的效果、用户评价</dt>
+        <dd>{{data?.project_user_experience}}</dd>
+      </dl>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,42 @@
+<ion-header no-border>
+  <ion-navbar transparent text-center>
+    <ion-title>注册新用户</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="name" text-center>
+    <img src="assets/images/login/name.png" alt="">
+  </div>
+  <div class="container" text-center>
+    <ion-list>
+      <ion-item transparent no-padding class="user">
+        <ion-input [readonly]="step>=2" maxlength="11" [ngModel]="phone" (ngModelChange)="changePhone($event)" (keydown.enter)="onKeyPress(1)" placeholder="请输入手机"></ion-input>
+      </ion-item>
+      <ion-item transparent no-padding class="code" [ngClass]="{none:step!=2}">
+        <ion-input maxlength="4" [ngModel]="code" (ngModelChange)="changeCode($event)" (keydown.enter)="onKeyPress(2)" placeholder="请输入验证码"></ion-input>
+        <span item-end [ngClass]="{none:canGetCode}" class="count-label">{{time}}</span>
+        <button ion-button outline item-end [ngClass]="{none:!canGetCode}" (tap)="tryToGetCode()">
+          <span [ngClass]="{none:!canGetCode}">获取验证码</span>
+        </button>
+      </ion-item>
+      <ion-item transparent no-padding class="lock" [ngClass]="{none:step!=2}">
+        <ion-input maxlength="20" #password type="password" [ngModel]="pwd" (ngModelChange)="changePassword($event)" (keydown.enter)="onKeyPress(3)" placeholder="请输入密码"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div class="error-tip" [ngClass]="{none:!hasError}">
+      <p [ngClass]="{none:phoneResult.isMatchLength}">请输入11位的手机号码</p>
+      <p [ngClass]="{none:phoneResult.isValid}">手机号码格式不正确</p>
+      <p [ngClass]="{none:codeResult.success}">{{codeResult.msg}}</p>
+      <p [ngClass]="{none:codeResult.isPass}">验证码不正确</p>
+      <p [ngClass]="{none:!(step==2&&code.length<4)}">请输入4位的验证码</p>
+      <p [ngClass]="{none:!(step==2&&pwd.length<6)}">请输入6-20位的密码</p>
+    </div>
+    <button ion-button block class="btn-normal" [ngClass]="{disable:isCodeBtnDisabled(),none:step!==1}" (tap)="getCode()">
+      获取验证码
+    </button>
+    <button ion-button block class="btn-normal" [ngClass]="{disable:isNextStepDisabled(),none:step!=2}" (tap)="register()">
+      下一步
+    </button>
+  </div>
+</ion-content>
