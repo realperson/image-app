@@ -1,26 +1,46 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+图说APP
 
-## How to use this template
+## 安装
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
-
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
-
-### With the Ionic CLI:
-
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
-
+*
+### 安装ionic和cordova:
 ```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myBlank blank
+npm i -g ionic cordova
+npm config set sass_binary_site=https://npm.taobao.org/mirrors/node-sass/
 ```
 
-Then, to run it, cd into `myBlank` and run:
-
+### 安装依赖包:
 ```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
+npm install
 ```
 
-Substitute ios for android if not on a Mac.
+### 在浏览器中运行:
+```bash
+ionic serve
+```
 
+### 生成IOS APP:
+需要在MAC系统下使用Xcode编译生成APP安装到Iphone
+1.添加ios版
+```bash
+ionic cordova platform add ios
+```
+
+2.编译ios项目
+```bash
+ionic cordova build ios
+```
+
+3.用Xcode打开platforms\ios项目编译生成APP安装到Iphone
+
+### 生成Android APP:
+0.需要首先安装Android运行环境
+1.添加android版
+```bash
+ionic cordova platform add android
+```
+
+2.编译android项目
+```bash
+ionic cordova run android
+```
