@@ -2,7 +2,6 @@
 
 ## 安装
 
-*
 ### 安装ionic和cordova:
 ```bash
 npm i -g ionic cordova
@@ -20,7 +19,7 @@ ionic serve
 ```
 
 ### 生成IOS APP:
-需要在MAC系统下使用Xcode编译生成APP安装到Iphone
+需要在MAC系统下使用Xcode编译生成APP安装到Iphone  
 1.添加ios版
 ```bash
 ionic cordova platform add ios
@@ -34,7 +33,7 @@ ionic cordova build ios
 3.用Xcode打开platforms\ios项目编译生成APP安装到Iphone
 
 ### 生成Android APP:
-0.需要首先安装Android运行环境
+0.需要首先安装Android运行环境  
 1.添加android版
 ```bash
 ionic cordova platform add android
