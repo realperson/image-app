@@ -40,7 +40,7 @@ ionic cordova build ios
 ionic cordova platform add android
 ```
 
-2.编译android项目
+2.编译生成android app并安装运行
 ```bash
 ionic cordova run android
 ```
